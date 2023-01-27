@@ -8,37 +8,55 @@ import { Zoom } from "react-reveal";
 import { addCard } from "../../redux/slices";
 import { useDispatch } from "react-redux";
 import { useMediaQuery } from "@mui/material";
+import { products } from "../products/products";
 export const ProductCard = (props) => {
   const { name, img, price } = props;
   const dispatch = useDispatch();
+  const elements = products.map((el) => el.id);
   const lg = useMediaQuery("(max-width:750px)");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   return (
-    <Card md={lg}>
-      <CardImg src={img} alt="" />
-      <CardNew>new</CardNew>
-      <CardInfo>
-        <CardName>{name}</CardName>
-        <div>
-          <CardPrice>${price}</CardPrice>
-          <button>
-            <img src={icon} width="20px" alt="" />
-          </button>
-        </div>
-      </CardInfo>
-      <Buttons>
-        <Zoom buttom>
-          <button
-            md={lg}
-            onClick={() => dispatch(addCard({ ...props, count: 1 }))}
-          >
-            <img src={heart} alt="" />
-          </button>
-          <button md={lg}>
-            <img src={shuffle} alt="" />
-          </button>
-        </Zoom>
-      </Buttons>
-    </Card>
+    <>
+      <Card md={lg}>
+        <CardImg src={img} alt="" />
+        <CardNew>new</CardNew>
+        <CardInfo>
+          <CardName>{name}</CardName>
+          <div>
+            <CardPrice>${price}</CardPrice>
+            <button>
+              <img src={icon} width="20px" alt="" />
+            </button>
+          </div>
+        </CardInfo>
+        <Buttons>
+          <Zoom buttom>
+            <button
+              md={lg}
+              onClick={() => dispatch(addCard({ ...props, elements }))}
+            >
+              <img src={heart} alt="" />
+            </button>
+            <button md={lg}>
+              <img src={shuffle} alt="" />
+            </button>
+          </Zoom>
+        </Buttons>
+      </Card>
+    </>
   );
 };
 const Card = styled.div`

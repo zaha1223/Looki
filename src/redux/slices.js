@@ -14,8 +14,11 @@ const cardSlice = createSlice({
       const newArr = state.arr.filter((el) => el.id !== actions.payload);
       state.arr = newArr;
     },
+    filterCard: (state, actions) => {
+      actions.payload.filter((el) => el.id === state.arr.map((el) => el.id));
+    },
   },
 });
 
-export const { addCard, removeCard } = cardSlice.actions;
+export const { addCard, removeCard, filterCard } = cardSlice.actions;
 export const CardReducer = cardSlice.reducer;

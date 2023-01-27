@@ -27,6 +27,7 @@ export const Header = () => {
   const [page, setPage] = React.useState(false);
   const [blog, setBlog] = React.useState(false);
   const [wish, setWish] = React.useState(false);
+  const [isMenu, setMenu] = React.useState(false);
   const item = useSelector((el) => el.card.arr);
   return (
     <>
@@ -104,7 +105,7 @@ export const Header = () => {
             ""
           )}
           {md ? (
-            <MenuBtn>
+            <MenuBtn onClick={() => setMenu(true)}>
               <img src={menu} alt="" width="40px" />
             </MenuBtn>
           ) : (
@@ -147,6 +148,9 @@ export const Header = () => {
             <button>view wishlist</button>
           </WishModalBottom>
         </WishModal>
+      </Drawer>
+      <Drawer open={isMenu} onClose={() => setMenu(false)} anchor="right">
+        wefvwefvbw
       </Drawer>
     </>
   );

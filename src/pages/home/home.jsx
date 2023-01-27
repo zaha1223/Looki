@@ -22,6 +22,7 @@ import {
 } from "../../components";
 export const Home = () => {
   const md = useMediaQuery("(max-width:687px)");
+  const lg = useMediaQuery("(max-width:540px)");
   const [isHover, setIshover] = React.useState(false);
   const [isnext, setNext] = React.useState(false);
   const handleMouseEnter = () => {
@@ -100,7 +101,7 @@ export const Home = () => {
         <SliderWrap>
           <Slider {...settings}>
             <ImgWrap>
-              <HeroContent>
+              <HeroContent lg={lg}>
                 <Fade left>
                   <HeroSubtitle>Face Makeup Brush</HeroSubtitle>
                 </Fade>
@@ -118,7 +119,7 @@ export const Home = () => {
               </Zoom>
             </ImgWrap>
             <ImgWrap>
-              <HeroContent>
+              <HeroContent lg={lg}>
                 <Fade left>
                   <HeroSubtitle>Morneva Shampoo</HeroSubtitle>
                 </Fade>
@@ -136,7 +137,7 @@ export const Home = () => {
               </Zoom>
             </ImgWrap>
             <ImgWrap>
-              <HeroContent>
+              <HeroContent lg={lg}>
                 <Fade left>
                   <HeroSubtitle>Runway Lip Palette red</HeroSubtitle>
                 </Fade>
@@ -194,8 +195,8 @@ const ImgWrap = styled.div`
 const HeroContent = styled.div`
   position: absolute;
   z-index: 3;
-  top: 100px;
-  left: 210px;
+  top: ${(props) => (!props.lg ? "100px" : "27px")};
+  left: ${(props) => (!props.lg ? "210px" : "150px")};
   max-width: 435px;
 `;
 const HeroSubtitle = styled.p`
